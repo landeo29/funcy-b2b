@@ -2,8 +2,8 @@ import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef, useState } from 'react'
 import TarjetaPaso from './TarjetaPaso'
-import fun1 from '../../../utilidades/assets/img/comofunciona/fun1.jpeg';
-import fun2 from '../../../utilidades/assets/img/comofunciona/fun2.jpeg';
+import fun1 from '../../../utilidades/assets/img/comofunciona/fun1.png';
+import fun2 from '../../../utilidades/assets/img/comofunciona/fun2.png';
 import fun3 from '../../../utilidades/assets/img/comofunciona/fun3.png';
 
 

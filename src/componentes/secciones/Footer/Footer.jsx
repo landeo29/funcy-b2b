@@ -1,12 +1,9 @@
 import { motion } from 'framer-motion'
+import logo from '../../../utilidades/assets/img/logo/logo.png'
 import {
     Mail,
     Phone,
     Globe,
-    Linkedin,
-    Instagram,
-    Youtube,
-    Brain,
     Heart,
     Sparkles,
     ChevronUp,
@@ -54,27 +51,6 @@ const Footer = () => {
         }
     ]
 
-    const redesSociales = [
-        {
-            nombre: 'LinkedIn',
-            icono: Linkedin,
-            link: 'https://linkedin.com/company/funcy',
-            color: 'hover:text-blue-600'
-        },
-        {
-            nombre: 'Instagram',
-            icono: Instagram,
-            link: 'https://instagram.com/funcy',
-            color: 'hover:text-pink-600'
-        },
-        {
-            nombre: 'YouTube',
-            icono: Youtube,
-            link: 'https://youtube.com/@funcy',
-            color: 'hover:text-red-600'
-        }
-    ]
-
     return (
         <footer className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-violet-500 to-transparent" />
@@ -91,22 +67,24 @@ const Footer = () => {
 
             <div className="container mx-auto px-4 py-12 lg:py-16 relative z-10">
                 <div className="max-w-6xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                    {/* Grid principal - 2 columnas */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
 
+                        {/* Columna 1: Logo y descripción */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
                             transition={{ duration: 0.6 }}
-                            className="lg:col-span-1"
+                            className="flex flex-col"
                         >
                             <div className="mb-6">
                                 <div className="flex items-center gap-3 mb-3">
-                                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center shadow-lg">
-                                        <Brain className="w-7 h-7 text-white" />
-                                    </div>
-                                    <h3 className="text-2xl font-bold">
-                                        FunCy
-                                    </h3>
+                                    <img
+                                        src={logo}
+                                        alt="FunCy Logo"
+                                        className="object-contain"
+                                        style={{ height: '75px', width: 'auto' }}
+                                    />
                                 </div>
                                 <p className="text-violet-400 font-semibold flex items-center gap-2">
                                     <Sparkles className="w-4 h-4" />
@@ -119,19 +97,20 @@ const Footer = () => {
                                 Desarrollado por especialistas en psicología, neurociencia y comportamiento humano.
                             </p>
 
-                            <div className="inline-flex items-center gap-2 px-3 py-2 bg-violet-900/30 rounded-lg border border-violet-700/30">
+                            <div className="inline-flex items-center gap-2 px-3 py-2 bg-violet-900/30 rounded-lg border border-violet-700/30 w-fit">
                                 <Heart className="w-4 h-4 text-violet-400" />
                                 <span className="text-xs text-violet-300">
-                  Plataforma certificada en bienestar laboral
-                </span>
+                                    Plataforma certificada en bienestar laboral
+                                </span>
                             </div>
                         </motion.div>
 
+                        {/* Columna 2: Información de contacto */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
                             transition={{ duration: 0.6, delay: 0.1 }}
-                            className="lg:col-span-1"
+                            className="flex flex-col"
                         >
                             <h4 className="text-lg font-semibold mb-6 flex items-center gap-2">
                                 <MapPin className="w-5 h-5 text-violet-400" />
@@ -161,51 +140,18 @@ const Footer = () => {
                                 ))}
                             </div>
                         </motion.div>
-
-                        <motion.div
-                            initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 20 }}
-                            transition={{ duration: 0.6, delay: 0.2 }}
-                            className="lg:col-span-1"
-                        >
-                            <h4 className="text-lg font-semibold mb-6">
-                                Síguenos
-                            </h4>
-
-                            <div className="flex gap-3 mb-8">
-                                {redesSociales.map((red, index) => (
-                                    <motion.a
-                                        key={index}
-                                        href={red.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        initial={{ opacity: 0, scale: 0 }}
-                                        animate={{ opacity: isVisible ? 1 : 0, scale: isVisible ? 1 : 0 }}
-                                        transition={{ duration: 0.3, delay: 0.3 + (index * 0.1) }}
-                                        whileHover={{ scale: 1.1, rotate: 5 }}
-                                        className={`
-                      w-12 h-12 rounded-xl bg-gray-800 hover:bg-gray-700
-                      flex items-center justify-center transition-all duration-300
-                      text-gray-400 ${red.color} group
-                    `}
-                                        aria-label={red.nombre}
-                                    >
-                                        <red.icono className="w-6 h-6" />
-                                    </motion.a>
-                                ))}
-                            </div>
-
-                        </motion.div>
                     </div>
 
+                    {/* Línea divisoria */}
                     <div className="h-px bg-gradient-to-r from-transparent via-gray-700 to-transparent mb-8" />
 
+                    {/* Footer bottom */}
                     <div className="flex flex-col md:flex-row items-center justify-center gap-4">
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: isVisible ? 1 : 0 }}
                             transition={{ duration: 0.6, delay: 0.5 }}
-                            className="text-center md:text-left"
+                            className="text-center"
                         >
                             <p className="text-sm text-gray-400">
                                 © 2025 FunCy - Funcional Neuro Laboral. Todos los derechos reservados.
@@ -215,6 +161,7 @@ const Footer = () => {
                 </div>
             </div>
 
+            {/* Botón scroll to top */}
             <motion.button
                 initial={{ opacity: 0, scale: 0 }}
                 animate={{
@@ -232,5 +179,4 @@ const Footer = () => {
     )
 }
 
-
-export default Footer;
+export default Footer
